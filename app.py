@@ -2,12 +2,18 @@ import os
 import requests
 import time
 from flask import Flask, render_template, jsonify, request, redirect, url_for
+import pandas as pd
+from joblib import load
 
 app = Flask(__name__)
 
-nodeMCU_ip = "192.168.100.176"
+nodeMCU_ip = "192.168.100.82:80" # change accordingly
 variables = ["temp_val", "moist_val", "n_val", "p_val", "k_val"]
 last_values = {}
+
+# Load the model and scaler
+model = load("svm_model.joblib")
+scaler = load("scaler.joblib")
 
 
 def fetch_sensor_values():
@@ -24,6 +30,20 @@ def fetch_sensor_values():
             values[variable_name] = last_values.get(variable_name, None)
     last_values = values
     return values
+
+
+def classify_values(values):
+    # Convert the values dictionary to a DataFrame
+    input_values = pd.DataFrame([values])
+
+    # Scale the features using the loaded scaler
+    input_values_scaled = scaler.transform(input_values)
+
+    # Make a prediction using the loaded model
+    predicted_cured = model.predict(input_values_scaled)
+
+    # Return the classification result
+    return "Yes" if predicted_cured[0] else "No"
 
 
 @app.route("/")
@@ -48,7 +68,9 @@ def parameters():
 
 @app.route("/history")
 def history():
-    return render_template("history.html", values=last_values)
+    values = fetch_sensor_values()
+    cured_status = classify_values(values)
+    return render_template("history.html", values=values, cured_status=cured_status)
 
 
 @app.route("/get_sensor_values")
