@@ -1,4 +1,4 @@
-# zzz_sample_fetch_server.py
+# sample_fetch_server.py
 
 import random
 from flask import Flask

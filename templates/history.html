@@ -1,4 +1,3 @@
-<!-- templates/history.html (do not remove/change this comment) -->
 {% extends "base.html" %}
 
 {% block title %}History{% endblock %}
@@ -12,16 +11,16 @@
 <div class="card" style="max-width: 500px; margin: auto; padding: 20px; border: 1px solid #000; border-radius: 10px; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);">
     <div class="card-body">
         <p style="border-bottom: 2px solid black; padding-bottom: 5px;">
-            <strong>Date: </strong>%Y-%m-%d<br>
-            <strong>RunTime: </strong>%H-%M-%S - %H-%M-%S
+            <strong>Date: </strong>{{ current_date }}<br>
+            <strong>RunTime: </strong>{{ start_time }} - {{ end_time }}
         </p>
-        <p><strong>TEMPERATURE:</strong> *last temp_val*</p>
-        <p><strong>MOISTURE:</strong> *last moist_val*</p>
-        <p><strong>NPK Values:</strong> *last n_val, p<_val, k_val*</p>
+        <p><strong>TEMPERATURE:</strong> {{ values['temp_val'] }}</p>
+        <p><strong>MOISTURE:</strong> {{ values['moist_val'] }}</p>
+        <p><strong>NPK Values:</strong></p>
         <ul style="list-style-type: none; padding-left: 0;">
-            <li><strong>Nitrogen:</strong></li>
-            <li><strong>Phosphorus:</strong></li>
-            <li><strong>Potassium:</strong></li>
+            <li><strong>Nitrogen:</strong> {{ values['n_val'] }}</li>
+            <li><strong>Phosphorus:</strong> {{ values['p_val'] }}</li>
+            <li><strong>Potassium:</strong> {{ values['k_val'] }}</li>
         </ul>
     </div>
 </div>
