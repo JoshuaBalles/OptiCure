@@ -1,0 +1,38 @@
+<!-- templates/parameters.html -->
+{% extends "base.html" %}
+
+{% block title %}Parameters{% endblock %}
+
+{% block topbar_text %}Parameters{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row" id="sensor-data">
+        {% for sensor, value in values.items() %}
+        <div class="col" id="{{ sensor }}">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ sensor }}</h5>
+                    <p class="card-text">{{ value }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+function updateSensorData() {
+    fetch('/get_sensor_values')
+        .then(response => response.json())
+        .then(data => {
+            Object.keys(data).forEach(sensor => {
+                document.getElementById(sensor).querySelector('.card-text').innerText = data[sensor];
+            });
+        });
+}
+
+// Update sensor data every second
+setInterval(updateSensorData, 3000);
+</script>
+{% endblock %}

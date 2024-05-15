@@ -1,0 +1,47 @@
+<!-- templates/dashboard.html (do not remove/change this comment) -->
+{% extends "base.html" %} {% block title %}Dashboard{% endblock %} {% block topbar_text %}Dashboard{% endblock %} {% block content %}
+<div class="container mt-5">
+	<div class="row">
+		<div class="col mb-3">
+			<div class="card h-100" style="border-radius: 1rem">
+				<div class="card-body d-flex justify-content-center align-items-center">
+					<i class="fa-solid fa-chart-pie fa-4x me-3"></i>
+					<div>
+						<h5 class="card-title display-5 text-center">Parameters</h5>
+						<p class="card-text text-center">Manage your parameters and settings.</p>
+						<a href="/parameters" class="stretched-link"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col mb-3">
+			<div class="card h-100" style="border-radius: 1rem">
+				<div class="card-body d-flex justify-content-center align-items-center">
+					<i class="fa-solid fa-chart-column fa-4x me-3"></i>
+					<div>
+						<h5 class="card-title display-5 text-center">History</h5>
+						<p class="card-text text-center">View the history of your activities.</p>
+						<a href="/history" class="stretched-link"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col mb-3">
+			<div class="card h-100" style="border-radius: 1rem">
+				<div class="card-body d-flex justify-content-center align-items-center">
+					<i class="fa-solid fa-power-off fa-4x me-3"></i>
+					<div>
+						<h5 class="card-title display-5 text-center">Power</h5>
+						<p class="card-text text-center">Manage your power settings.</p>
+						<a href="/power" class="stretched-link"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

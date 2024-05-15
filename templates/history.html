@@ -1,0 +1,28 @@
+<!-- templates/history.html (do not remove/change this comment) -->
+{% extends "base.html" %}
+
+{% block title %}History{% endblock %}
+
+{% block topbar_text %}History{% endblock %}
+
+{% block content %}
+<h1 class="mt-5">Welcome to the History</h1>
+<p>This is the History page.</p>
+
+<div class="card" style="max-width: 500px; margin: auto; padding: 20px; border: 1px solid #000; border-radius: 10px; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);">
+    <div class="card-body">
+        <p style="border-bottom: 2px solid black; padding-bottom: 5px;">
+            <strong>Date: </strong>%Y-%m-%d<br>
+            <strong>RunTime: </strong>%H-%M-%S - %H-%M-%S
+        </p>
+        <p><strong>TEMPERATURE:</strong> *last temp_val*</p>
+        <p><strong>MOISTURE:</strong> *last moist_val*</p>
+        <p><strong>NPK Values:</strong> *last n_val, p<_val, k_val*</p>
+        <ul style="list-style-type: none; padding-left: 0;">
+            <li><strong>Nitrogen:</strong></li>
+            <li><strong>Phosphorus:</strong></li>
+            <li><strong>Potassium:</strong></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
