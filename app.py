@@ -7,7 +7,7 @@ from joblib import load
 
 app = Flask(__name__)
 
-nodeMCU_ip = "192.168.100.82:80" # change accordingly
+nodeMCU_ip = "192.168.106.228" # change accordingly
 variables = ["temp_val", "moist_val", "n_val", "p_val", "k_val"]
 last_values = {}
 
